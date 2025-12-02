@@ -8,7 +8,7 @@ export default function Home() {
       <Image
         src="/kungfuTea.png"
         alt="Description"
-        width={400}
+        width={500}
         height={300}
         className="mt-4"
       />
