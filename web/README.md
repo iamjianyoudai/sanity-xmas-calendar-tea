@@ -1,8 +1,23 @@
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
+## Environment Variables
+
+Create a `.env.local` file in the root of the `web` directory with the following variables:
+
+```env
+NEXT_PUBLIC_SANITY_PROJECT_ID=your-project-id
+NEXT_PUBLIC_SANITY_DATASET=production
+```
+
+**Important:**
+
+- The `.env.local` file is already in `.gitignore` and won't be committed
+- For Vercel deployment, add these environment variables in your Vercel project settings
+- Use `NEXT_PUBLIC_` prefix so these variables are available in the browser
+
 ## Getting Started
 
-First, run the development server:
+First, create your `.env.local` file (see above), then run the development server:
 
 ```bash
 npm run dev
