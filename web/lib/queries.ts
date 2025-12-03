@@ -1,5 +1,3 @@
-// GROQ query to fetch homepage with featured teas
-// Using template literal (no need for groq helper in this case)
 export const homepageQuery = `
   *[_type == "homepage"][0] {
     title,
@@ -20,5 +18,4 @@ export const homepageQuery = `
       }
     }
   }
-`
-
+`;
