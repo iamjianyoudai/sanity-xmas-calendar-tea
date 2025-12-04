@@ -19,3 +19,26 @@ export const homepageQuery = `
     }
   }
 `;
+
+// Query to fetch a single tea by slug
+export const teaBySlugQuery = `
+  *[_type == "tea" && slug.current == $slug][0] {
+    _id,
+    name,
+    slug,
+    description,
+    origin,
+    flavorNotes,
+    "category": category-> {
+      title,
+      description,
+      color
+    },
+    "imageUrl": image.asset->url,
+    brewingInstructions {
+      amount,
+      temperature,
+      steepTime
+    }
+  }
+`;
