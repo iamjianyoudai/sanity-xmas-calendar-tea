@@ -1,6 +1,12 @@
 import Image from "next/image";
 import Link from "next/link";
 import { PortableText, type PortableTextComponents } from "@portabletext/react";
+import type { PortableTextBlock } from "@portabletext/types";
+import { client } from "@/lib/sanity";
+import { teaBySlugQuery } from "@/lib/queries";
+import { getTeaImage } from "@/lib/imageMap";
+import type { Tea } from "@/types/sanity";
+
 const portableComponents: PortableTextComponents = {
   types: {
     image: ({ value }: { value?: PortableTextBlock[] }) => {
@@ -19,12 +25,6 @@ const portableComponents: PortableTextComponents = {
     },
   },
 };
-
-import { client } from "@/lib/sanity";
-import { teaBySlugQuery } from "@/lib/queries";
-import { getTeaImage } from "@/lib/imageMap";
-import type { Tea } from "@/types/sanity";
-import { PortableTextBlock } from "@portabletext/react";
 
 interface PageProps {
   params: Promise<{
