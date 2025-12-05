@@ -1,3 +1,5 @@
+import { PortableTextBlock } from "@portabletext/react";
+
 export interface BrewingInstructions {
   amount?: string;
   temperature?: string;
@@ -30,6 +32,7 @@ export interface Tea {
   slug: {
     current: string;
   };
+  body?: PortableTextBlock[];
   description?: string;
   origin?: string;
   flavorNotes?: string[];

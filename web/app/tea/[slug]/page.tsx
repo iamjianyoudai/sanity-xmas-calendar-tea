@@ -1,9 +1,30 @@
 import Image from "next/image";
 import Link from "next/link";
+import { PortableText, type PortableTextComponents } from "@portabletext/react";
+const portableComponents: PortableTextComponents = {
+  types: {
+    image: ({ value }: { value?: PortableTextBlock[] }) => {
+      const v = value as
+        | { url?: string; asset?: { url?: string }; alt?: string }
+        | undefined;
+      const url = v?.url || v?.asset?.url;
+      if (!url) return null;
+      return (
+        <div className="my-6">
+          <div className="relative w-full h-[320px] md:h-[420px] rounded-lg overflow-hidden shadow">
+            <Image src={url} alt={v?.alt || ""} fill className="object-cover" />
+          </div>
+        </div>
+      );
+    },
+  },
+};
+
 import { client } from "@/lib/sanity";
 import { teaBySlugQuery } from "@/lib/queries";
 import { getTeaImage } from "@/lib/imageMap";
 import type { Tea } from "@/types/sanity";
+import { PortableTextBlock } from "@portabletext/react";
 
 interface PageProps {
   params: Promise<{
@@ -34,7 +55,7 @@ export default async function TeaPage({ params }: PageProps) {
               Tea Not Found
             </h1>
             <p className="text-gray-600 mb-8">
-              The tea you're looking for doesn't exist.
+              The tea you&apos;re looking for doesn&apos;t exist.
             </p>
             <Link
               href="/"
@@ -136,14 +157,24 @@ export default async function TeaPage({ params }: PageProps) {
           })()}
 
           {/* Description Section */}
-          {tea.description && (
+          {(tea.description || (tea.body && tea.body.length > 0)) && (
             <div className="bg-white rounded-lg shadow-md p-8 mb-8">
               <h2 className="text-2xl font-bold text-green-800 mb-4">
                 About {tea.name}
               </h2>
-              <p className="text-gray-700 text-lg leading-relaxed whitespace-pre-line">
-                {tea.description}
-              </p>
+              {tea.description && (
+                <p className="text-gray-700 text-lg leading-relaxed whitespace-pre-line mb-4">
+                  {tea.description}
+                </p>
+              )}
+              {tea.body && tea.body.length > 0 && (
+                <div className="prose prose-lg max-w-none">
+                  <PortableText
+                    value={tea.body}
+                    components={portableComponents}
+                  />
+                </div>
+              )}
             </div>
           )}
 

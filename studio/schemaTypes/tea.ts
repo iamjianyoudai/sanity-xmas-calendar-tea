@@ -30,11 +30,12 @@ export default defineType({
       description: 'The main category this tea belongs to',
       validation: (Rule) => Rule.required(),
     }),
+
     defineField({
-      name: 'description',
-      title: 'Description',
-      type: 'text',
-      description: 'Description of the tea',
+      name: 'body',
+      title: 'Body',
+      type: 'blockContent',
+      description: 'Body of the tea',
     }),
     defineField({
       name: 'flavorNotes',

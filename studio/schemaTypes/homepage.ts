@@ -18,6 +18,12 @@ export default defineType({
       description: 'Introduction to tea',
     }),
     defineField({
+      name: 'body',
+      title: 'Body',
+      type: 'blockContent',
+      description: 'Rich text content for the homepage',
+    }),
+    defineField({
       name: 'featuredTeas',
       title: 'Featured Teas',
       type: 'array',

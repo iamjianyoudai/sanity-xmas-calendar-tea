@@ -27,6 +27,14 @@ export const teaBySlugQuery = `
     name,
     slug,
     description,
+    body[]{
+      ...,
+      _type == "image" => {
+        ...,
+        "url": asset->url,
+        "alt": coalesce(alt, asset->altText)
+      }
+    },
     origin,
     flavorNotes,
     "category": category-> {
