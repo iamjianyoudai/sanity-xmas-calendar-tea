@@ -6,34 +6,29 @@ export default defineType({
   type: 'document',
   fields: [
     defineField({
-      name: 'title',
-      title: 'Title',
+      name: 'headerTitle',
+      title: 'Header Title',
       type: 'string',
-      description: 'Main title for the homepage',
+      description: 'Main hero title (e.g. “Let’s have a tea break”).',
     }),
     defineField({
-      name: 'introduction',
-      title: 'Introduction',
+      name: 'subtitle',
+      title: 'Subtitle',
       type: 'text',
-      description: 'Introduction to tea',
+      description: 'Short description subtitle below the title.',
     }),
     defineField({
-      name: 'body',
-      title: 'Body',
-      type: 'blockContent',
-      description: 'Rich text content for the homepage',
-    }),
-    defineField({
-      name: 'featuredTeas',
-      title: 'Featured Teas',
+      name: 'teaTypes',
+      title: 'Tea Types',
       type: 'array',
-      of: [{type: 'reference', to: [{type: 'tea'}]}],
-      description: 'Select teas to feature on the homepage',
+      description:
+        'Select tea types to display on the homepage. These will be clickable and open the tea type modal.',
+      of: [{type: 'reference', to: [{type: 'teaType'}]}],
     }),
   ],
   preview: {
     select: {
-      title: 'title',
+      title: 'headerTitle',
     },
   },
 })

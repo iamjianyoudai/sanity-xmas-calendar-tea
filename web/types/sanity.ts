@@ -6,12 +6,6 @@ export interface BrewingInstructions {
   steepTime?: string;
 }
 
-export interface TeaCategory {
-  title?: string;
-  description?: string;
-  color?: string;
-}
-
 export interface FeaturedTea {
   _id: string;
   name: string;
@@ -33,12 +27,18 @@ export interface Tea {
     current: string;
   };
   body?: PortableTextBlock[];
-  description?: string;
   origin?: string;
   flavorNotes?: string[];
-  category?: TeaCategory;
   imageUrl?: string;
   brewingInstructions?: BrewingInstructions;
+  category?: {
+    _id: string;
+    name: string;
+    slug: {
+      current: string;
+    };
+    description?: string;
+  };
 }
 
 export interface Homepage {

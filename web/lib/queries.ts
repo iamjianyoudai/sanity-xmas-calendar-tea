@@ -1,32 +1,21 @@
 export const homepageQuery = `
   *[_type == "homepage"][0] {
-    title,
-    introduction,
-    featuredTeas[]-> {
+    headerTitle,
+    subtitle,
+    teaTypes[]->{
       _id,
       name,
-      slug,
-      description,
-      origin,
-      flavorNotes,
-      "category": category->title,
-      "imageUrl": image.asset->url,
-      brewingInstructions {
-        amount,
-        temperature,
-        steepTime
-      }
+      "slug": slug.current
     }
   }
 `;
 
-// Query to fetch a single tea by slug
+// Query to fetch a single tea by slug (with category info)
 export const teaBySlugQuery = `
   *[_type == "tea" && slug.current == $slug][0] {
     _id,
     name,
     slug,
-    description,
     body[]{
       ...,
       _type == "image" => {
@@ -37,16 +26,42 @@ export const teaBySlugQuery = `
     },
     origin,
     flavorNotes,
-    "category": category-> {
-      title,
-      description,
-      color
-    },
     "imageUrl": image.asset->url,
     brewingInstructions {
       amount,
       temperature,
       steepTime
+    },
+    "category": category->{
+      _id,
+      name,
+      "slug": slug.current,
+      description
+    }
+  }
+`;
+
+// Query to fetch a tea type by slug (with related teas from manually curated array)
+export const teaTypeBySlugQuery = `
+  *[_type == "teaType" && slug.current == $slug][0]{
+    _id,
+    name,
+    "slug": slug.current,
+    description,
+    "imageUrl": image.asset->url,
+    flavorNotes,
+    brewingInstructions {
+      amount,
+      temperature,
+      steepTime
+    },
+    // Fetch manually curated relatedTeas array from Studio
+    "relatedTeas": relatedTeas[]->{
+      _id,
+      name,
+      "slug": slug.current,
+      "imageUrl": image.asset->url,
+      flavorNotes
     }
   }
 `;

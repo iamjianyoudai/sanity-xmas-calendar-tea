@@ -2,7 +2,7 @@ import {defineField, defineType} from 'sanity'
 
 export default defineType({
   name: 'tea',
-  title: 'Tea',
+  title: 'Teas',
   type: 'document',
   fields: [
     defineField({
@@ -26,11 +26,10 @@ export default defineType({
       name: 'category',
       title: 'Category',
       type: 'reference',
-      to: [{type: 'teaCategory'}],
-      description: 'The main category this tea belongs to',
+      to: [{type: 'teaType'}],
+      description: 'The tea type/category this tea belongs to',
       validation: (Rule) => Rule.required(),
     }),
-
     defineField({
       name: 'body',
       title: 'Body',
@@ -88,7 +87,6 @@ export default defineType({
   preview: {
     select: {
       title: 'name',
-      subtitle: 'category.title',
       media: 'image',
     },
   },

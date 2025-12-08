@@ -1,7 +1,7 @@
 import homepage from './homepage'
 import tea from './tea'
-import teaCategory from './teaCategory'
+import teaType from './teaType'
 import blockContent from './blockContent'
 import quoteBlock from './quoteBlock'
 
-export const schemaTypes = [homepage, teaCategory, tea, blockContent, quoteBlock]
+export const schemaTypes = [homepage, teaType, tea, blockContent, quoteBlock]

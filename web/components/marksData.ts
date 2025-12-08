@@ -1,0 +1,98 @@
+export const marks = [
+  {
+    id: 1,
+    x: 0.55,
+    y: 0.55,
+    color: "#d4a574",
+    label: "Oolong Tea",
+    name: "Oolong Tea",
+    description:
+      "A traditional semi-oxidized tea with a complex flavor profile, balancing the freshness of green tea with the depth of black tea.",
+    imageUrl: "/oolongTea.avif",
+    slug: "oolong-tea",
+  },
+  {
+    id: 2,
+    x: 0.6,
+    y: 0.48,
+    color: "#DAB287",
+    label: "Green Tea",
+    name: "Green Tea",
+    description:
+      "Delicate and refreshing, green tea is known for its light, grassy flavor and numerous health benefits.",
+    imageUrl: "/greenTea2.png",
+    slug: "green-tea",
+  },
+  {
+    id: 3,
+    x: 0.56,
+    y: 0.68,
+    color: "#c8e6c9",
+    label: "Green Tea",
+    name: "Green Tea",
+    description:
+      "Bold and robust, black tea offers a rich, full-bodied flavor with notes of malt and earthiness.",
+    imageUrl: "/greenTea.jpeg",
+    slug: "green-tea",
+  },
+  {
+    id: 4,
+    x: 0.46,
+    y: 0.8,
+    color: "#fff9c4",
+    label: "White Tea",
+    name: "White Tea",
+    description:
+      "The most delicate of teas, white tea has a subtle, sweet flavor with floral undertones.",
+    imageUrl: "/whiteTea.webp",
+    slug: "white-tea",
+  },
+  {
+    id: 5,
+    x: 0.32,
+    y: 0.85,
+    color: "#5d4037",
+    label: "Pu-erh Tea",
+    name: "Pu-erh Tea",
+    description:
+      "A fermented tea with an earthy, complex flavor that deepens with age, prized by tea connoisseurs.",
+    imageUrl: "/puerh.jpg",
+    slug: "pu-erh-tea",
+  },
+  {
+    id: 6,
+    x: 0.74,
+    y: 0.78,
+    color: "#e8f5e9",
+    label: "White Tea",
+    name: "White Tea",
+    description:
+      "The most delicate of teas, white tea has a subtle, sweet flavor with floral undertones.",
+    imageUrl: "/whiteTea.webp",
+    slug: "jasmine-tea",
+  },
+  {
+    id: 7,
+    x: 0.58,
+    y: 0.9,
+    color: "#f4a460",
+    label: "Green Tea",
+    name: "Green Tea",
+    description:
+      "Delicate and refreshing, green tea is known for its light, grassy flavor and numerous health benefits.",
+    imageUrl: "/greenTeaDry.jpg",
+    slug: "green-tea",
+  },
+  {
+    id: 8,
+    x: 0.75,
+    y: 0.58,
+    color: "#fcfaf6",
+    label: "Green Yellow Tea",
+    name: "Green Yellow Tea",
+    description:
+      "A rare tea variety with a unique processing method, offering a balance between green and yellow tea characteristics.",
+    imageUrl: "/yellowTea.webp",
+    slug: "green-yellow-tea",
+  },
+];
