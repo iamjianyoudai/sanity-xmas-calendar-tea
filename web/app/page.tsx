@@ -58,9 +58,6 @@ export default function Home() {
     client
       .withConfig({ useCdn: false })
       .fetch(`*[_type == "teaType"]{name,"slug": slug.current}`)
-      .then((list) => {
-        console.log("Tea types available:", list);
-      })
       .catch((err) => {
         console.error("Error listing tea types:", err);
       });
@@ -69,7 +66,6 @@ export default function Home() {
     client
       .fetch(homepageQuery)
       .then((data) => {
-        console.log("Homepage data:", data);
         setHomeContent(data && typeof data === "object" ? data : {});
       })
       .catch((err) => {
@@ -85,7 +81,6 @@ export default function Home() {
     setIsLoadingTea(true);
     setIsModalOpen(true);
     try {
-      console.log("Fetching tea type for slug:", slug);
       // When clicking from homepage, we're clicking a tea type (e.g., "Green Tea")
       // So we only need to fetch the teaType, not an individual tea
       const typeModal = await client
@@ -98,10 +93,6 @@ export default function Home() {
         setSelectedTeaType(null);
         return;
       }
-
-      console.log("Tea type data:", typeModal);
-      console.log("Related teas:", typeModal.relatedTeas);
-      console.log("Related teas count:", typeModal.relatedTeas?.length || 0);
 
       // Set only teaType data (not individual tea)
       setSelectedTea(null);

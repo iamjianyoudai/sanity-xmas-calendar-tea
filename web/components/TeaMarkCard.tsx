@@ -101,7 +101,7 @@ export default function TeaMarkCard({
             <button
               type="button"
               onClick={() => onExplore(slug)}
-              className="inline-block w-full text-center px-4 py-2 bg-white/20 hover:bg-white/30 text-white rounded-md text-sm font-semibold transition-colors duration-200 border border-white/30"
+              className="inline-block w-full text-center px-4 py-2 bg-white/20 hover:bg-white/30 text-white rounded-md text-sm font-semibold transition-colors duration-200 border border-white/30 cursor-pointer"
             >
               Explore more {name}
             </button>
@@ -109,7 +109,7 @@ export default function TeaMarkCard({
           {slug && !onExplore && (
             <Link
               href={`/tea/${slug}`}
-              className="inline-block w-full text-center px-4 py-2 bg-white/20 hover:bg-white/30 text-white rounded-md text-sm font-semibold transition-colors duration-200 border border-white/30"
+              className="inline-block w-full text-center px-4 py-2 bg-white/20 hover:bg-white/30 text-white rounded-md text-sm font-semibold transition-colors duration-200 border border-white/30 cursor-pointer"
             >
               Explore more {name}
             </Link>
