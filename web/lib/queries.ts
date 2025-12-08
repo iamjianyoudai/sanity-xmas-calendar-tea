@@ -41,7 +41,7 @@ export const teaBySlugQuery = `
   }
 `;
 
-// Query to fetch a tea type by slug (with related teas from manually curated array)
+// Query to fetch a tea type by slug (pulls related teas via references)
 export const teaTypeBySlugQuery = `
   *[_type == "teaType" && slug.current == $slug][0]{
     _id,
@@ -55,7 +55,7 @@ export const teaTypeBySlugQuery = `
       temperature,
       steepTime
     },
-    // Fetch manually curated relatedTeas array from Studio
+
     "relatedTeas": relatedTeas[]->{
       _id,
       name,

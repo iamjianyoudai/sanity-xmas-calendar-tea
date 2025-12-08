@@ -6,14 +6,6 @@ export default defineType({
   type: 'document',
   fields: [
     defineField({
-      name: 'name',
-      title: 'Tea Name',
-      type: 'string',
-      description: 'Name of the specific tea',
-      validation: (Rule) => Rule.required(),
-    }),
-
-    defineField({
       name: 'slug',
       title: 'Slug',
       type: 'slug',
@@ -25,11 +17,18 @@ export default defineType({
     }),
 
     defineField({
+      name: 'name',
+      title: 'Tea Name',
+      type: 'string',
+      description: 'Name of the specific tea',
+      validation: (Rule) => Rule.required(),
+    }),
+
+    defineField({
       name: 'category',
       title: 'Category',
       type: 'reference',
       to: [{type: 'teaType'}],
-      description: 'The tea type/category this tea belongs to',
       validation: (Rule) => Rule.required(),
     }),
 

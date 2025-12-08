@@ -147,11 +147,6 @@ export default function Home() {
                 onToggle={(id) =>
                   setClickedMarkId(clickedMarkId === id ? null : id)
                 }
-                onExploreSlug={(slug) => {
-                  // Close the card before opening the modal
-                  setClickedMarkId(null);
-                  if (slug) handleTeaClick(slug);
-                }}
               />
             </div>
           </div>

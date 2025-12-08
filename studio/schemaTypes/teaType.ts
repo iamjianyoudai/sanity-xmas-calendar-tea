@@ -6,18 +6,6 @@ export default defineType({
   type: 'document',
   fields: [
     defineField({
-      name: 'slug',
-      title: 'Slug',
-      type: 'slug',
-      options: {
-        source: 'name',
-        isUnique: (slug, context) => context.defaultIsUnique(slug, context),
-      },
-      description: 'Used to fetch this tea type (e.g. green-tea).',
-      validation: (Rule) => Rule.required(),
-    }),
-
-    defineField({
       name: 'name',
       title: 'Tea Type Name',
       type: 'string',
@@ -25,11 +13,14 @@ export default defineType({
     }),
 
     defineField({
-      name: 'image',
-      title: 'Hero Image',
-      type: 'image',
-      options: {hotspot: true},
-      description: 'Optional image; can be replaced by local asset in frontend.',
+      name: 'slug',
+      title: 'Slug',
+      type: 'slug',
+      options: {
+        source: 'name',
+        isUnique: (slug, context) => context.defaultIsUnique(slug, context),
+      },
+      validation: (Rule) => Rule.required(),
     }),
 
     defineField({
@@ -41,11 +32,9 @@ export default defineType({
 
     defineField({
       name: 'relatedTeas',
-      title: 'More from this Tea (e.g. Green Tea)',
+      title: 'Related teas',
       type: 'array',
       of: [{type: 'reference', to: [{type: 'tea'}]}],
-      description:
-        'Collection of teas to surface in the modal. Can also be queried via tea.category reference.',
     }),
 
     defineField({

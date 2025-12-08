@@ -63,13 +63,13 @@ export const marks = [
     id: 6,
     x: 0.74,
     y: 0.78,
-    color: "#e8f5e9",
+    color: "#fff9c4",
     label: "White Tea",
     name: "White Tea",
     description:
       "The most delicate of teas, white tea has a subtle, sweet flavor with floral undertones.",
     imageUrl: "/whiteTea.webp",
-    slug: "jasmine-tea",
+    slug: "white-tea",
   },
   {
     id: 7,

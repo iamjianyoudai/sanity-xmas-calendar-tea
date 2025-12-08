@@ -1,5 +1,4 @@
 import Image from "next/image";
-import Link from "next/link";
 import { useLayoutEffect, useRef, useState } from "react";
 
 interface TeaMarkCardProps {
@@ -8,18 +7,16 @@ interface TeaMarkCardProps {
   description?: string;
   slug?: string;
   position: { left: number; top: number };
-  onExplore?: (slug?: string) => void;
 }
 
 export default function TeaMarkCard({
   imageUrl,
   name,
   description,
-  slug,
   position,
-  onExplore,
 }: TeaMarkCardProps) {
   const cardRef = useRef<HTMLDivElement>(null);
+  const [imageLoaded, setImageLoaded] = useState(!imageUrl);
   const [clamped, setClamped] = useState({
     left: position.left + 20,
     top: position.top - 20,
@@ -76,14 +73,18 @@ export default function TeaMarkCard({
       <div className="bg-black/40 backdrop-blur-md rounded-lg shadow-2xl border border-white/20 p-4 md:p-5 w-[240px] md:w-[280px] max-h-[80vh] overflow-hidden animate-[card-entrance_0.3s_ease-out_forwards]">
         {/* Image - Portrait orientation */}
         {imageUrl && (
-          <div className="relative w-full h-48 md:h-56 mb-4 rounded-md overflow-hidden">
+          <div className="relative w-full h-48 md:h-56 mb-4 rounded-md overflow-hidden bg-white/5">
             <Image
               src={imageUrl}
               alt={name}
               fill
               className="object-cover"
               sizes="(max-width: 768px) 240px, 280px"
+              onLoadingComplete={() => setImageLoaded(true)}
             />
+            {!imageLoaded && (
+              <div className="absolute inset-0 bg-white/10 animate-pulse" />
+            )}
           </div>
         )}
 
@@ -94,33 +95,6 @@ export default function TeaMarkCard({
             <p className="text-sm md:text-base text-white/90 mb-4 line-clamp-4">
               {description}
             </p>
-          )}
-
-          {/* Read More Button */}
-          {slug && onExplore && (
-            <button
-              type="button"
-              onClick={() => onExplore(slug)}
-              className="inline-block w-full text-center px-4 py-2 bg-white/20 hover:bg-white/30 text-white rounded-md text-sm font-semibold transition-colors duration-200 border border-white/30 cursor-pointer"
-            >
-              Explore more {name}
-            </button>
-          )}
-          {slug && !onExplore && (
-            <Link
-              href={`/tea/${slug}`}
-              className="inline-block w-full text-center px-4 py-2 bg-white/20 hover:bg-white/30 text-white rounded-md text-sm font-semibold transition-colors duration-200 border border-white/30 cursor-pointer"
-            >
-              Explore more {name}
-            </Link>
-          )}
-          {!slug && (
-            <button
-              disabled
-              className="inline-block w-full text-center px-4 py-2 bg-white/20 text-white/60 rounded-md text-sm font-semibold cursor-not-allowed border border-white/20"
-            >
-              Explore more {name}
-            </button>
           )}
         </div>
 

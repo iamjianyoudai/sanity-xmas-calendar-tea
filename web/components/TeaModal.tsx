@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { PortableText, type PortableTextComponents } from "@portabletext/react";
 import type { PortableTextBlock } from "@portabletext/types";
+import { useState } from "react";
 import type { Tea } from "@/types/sanity";
 
 interface RelatedTea {
@@ -83,6 +84,10 @@ export default function TeaModal({
   isOpen,
   onClose,
 }: TeaModalProps) {
+  const [heroLoaded, setHeroLoaded] = useState(
+    !(teaTypeData?.imageUrl || tea?.imageUrl)
+  );
+
   if (!isOpen || (!tea && !teaTypeData)) return null;
 
   const display = {
@@ -144,14 +149,18 @@ export default function TeaModal({
 
           {/* Image */}
           {display.imageUrl && (
-            <div className="relative h-72 md:h-96 w-full mb-6 rounded-lg overflow-hidden shadow-lg">
+            <div className="relative h-72 md:h-96 w-full mb-6 rounded-lg overflow-hidden shadow-lg bg-white/5">
               <Image
                 src={display.imageUrl}
                 alt={display.name}
                 fill
                 className="object-cover"
                 priority
+                onLoadingComplete={() => setHeroLoaded(true)}
               />
+              {!heroLoaded && (
+                <div className="absolute inset-0 bg-white/10 animate-pulse" />
+              )}
             </div>
           )}
 
