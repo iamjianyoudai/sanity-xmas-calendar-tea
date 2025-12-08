@@ -113,7 +113,7 @@ export default function TeaModal({
         {/* Close Button */}
         <button
           onClick={onClose}
-          className="absolute top-4 right-4 z-10 p-2 bg-white/90 hover:bg-white rounded-full shadow-lg transition-colors"
+          className="absolute top-4 right-4 z-10 p-2 bg-white/90 hover:bg-white rounded-full shadow-lg transition-colors cursor-pointer"
           aria-label="Close modal"
         >
           <svg
@@ -136,7 +136,7 @@ export default function TeaModal({
           {/* Header */}
           <div className="mb-6">
             <div className="flex items-center justify-between mb-4">
-              <h1 className="text-4xl md:text-5xl font-bold text-white">
+              <h1 className="text-4xl md:text-5xl font-semibold text-gray-100">
                 {display.name}
               </h1>
             </div>
@@ -169,10 +169,10 @@ export default function TeaModal({
           {(!display.body || display.body.length === 0) &&
             display.description && (
               <div className="mb-6">
-                <h2 className="text-2xl font-bold text-white mb-4">
+                <h2 className="text-2xl font-semibold text-gray-100 mb-4">
                   About {display.name}
                 </h2>
-                <p className="text-white/85 text-lg leading-relaxed whitespace-pre-line">
+                <p className="text-gray-200/90 text-lg leading-relaxed whitespace-pre-line">
                   {display.description}
                 </p>
               </div>
@@ -182,7 +182,7 @@ export default function TeaModal({
           Array.isArray(display.relatedTeas) &&
           display.relatedTeas.length > 0 ? (
             <div className="mb-8">
-              <h2 className="text-2xl font-bold text-white mb-4">
+              <h2 className="text-2xl font-semibold text-gray-100 mb-4">
                 More from {display.name || "this category"}
               </h2>
               <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
@@ -243,14 +243,14 @@ export default function TeaModal({
           {/* Flavor Notes */}
           {display.flavorNotes && display.flavorNotes.length > 0 && (
             <div className="mb-6">
-              <h2 className="text-2xl font-bold text-white mb-4">
+              <h2 className="text-2xl font-semibold text-gray-100 mb-4">
                 Flavor Notes
               </h2>
               <div className="flex flex-wrap gap-3">
                 {display.flavorNotes.map((note, index) => (
                   <span
                     key={index}
-                    className="px-4 py-2 bg-white/10 text-white rounded-full text-base font-medium border border-white/20"
+                    className="px-4 py-2 bg-white/10 text-gray-100 rounded-full text-base font-medium border border-white/20"
                   >
                     {note}
                   </span>
@@ -262,17 +262,17 @@ export default function TeaModal({
           {/* Brewing Instructions */}
           {display.brewingInstructions && (
             <div>
-              <h2 className="text-2xl font-bold text-white mb-4">
+              <h2 className="text-2xl font-semibold text-gray-100 mb-4">
                 Brewing Instructions
               </h2>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                 {display.brewingInstructions.amount && (
                   <div className="text-center p-3 bg-white/10 rounded-lg border border-white/15">
                     <div className="text-3xl mb-2">⚖️</div>
-                    <h3 className="font-semibold text-white mb-1 text-base">
+                    <h3 className="font-semibold text-gray-100 mb-1 text-base">
                       Amount
                     </h3>
-                    <p className="text-white/80 text-sm">
+                    <p className="text-gray-300/85 text-sm">
                       {display.brewingInstructions.amount}
                     </p>
                   </div>
@@ -280,10 +280,10 @@ export default function TeaModal({
                 {display.brewingInstructions.temperature && (
                   <div className="text-center p-3 bg-white/10 rounded-lg border border-white/15">
                     <div className="text-3xl mb-2">🌡️</div>
-                    <h3 className="font-semibold text-white mb-1 text-base">
+                    <h3 className="font-semibold text-gray-100 mb-1 text-base">
                       Temperature
                     </h3>
-                    <p className="text-white/80 text-sm">
+                    <p className="text-gray-300/85 text-sm">
                       {display.brewingInstructions.temperature}
                     </p>
                   </div>
@@ -291,10 +291,10 @@ export default function TeaModal({
                 {display.brewingInstructions.steepTime && (
                   <div className="text-center p-3 bg-white/10 rounded-lg border border-white/15">
                     <div className="text-3xl mb-2">⏱️</div>
-                    <h3 className="font-semibold text-white mb-1 text-base">
+                    <h3 className="font-semibold text-gray-100 mb-1 text-base">
                       Steep Time
                     </h3>
-                    <p className="text-white/80 text-sm">
+                    <p className="text-gray-300/85 text-sm">
                       {display.brewingInstructions.steepTime}
                     </p>
                   </div>
