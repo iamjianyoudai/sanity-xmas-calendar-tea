@@ -12,6 +12,7 @@ export default defineType({
       description: 'Name of the specific tea',
       validation: (Rule) => Rule.required(),
     }),
+
     defineField({
       name: 'slug',
       title: 'Slug',
@@ -22,6 +23,7 @@ export default defineType({
       },
       validation: (Rule) => Rule.required(),
     }),
+
     defineField({
       name: 'category',
       title: 'Category',
@@ -30,12 +32,14 @@ export default defineType({
       description: 'The tea type/category this tea belongs to',
       validation: (Rule) => Rule.required(),
     }),
+
     defineField({
       name: 'body',
       title: 'Body',
       type: 'blockContent',
       description: 'Body of the tea',
     }),
+
     defineField({
       name: 'flavorNotes',
       title: 'Flavor Notes',
@@ -43,12 +47,14 @@ export default defineType({
       of: [{type: 'string'}],
       description: 'Flavor notes (e.g., fresh grass, roasted hazelnuts)',
     }),
+
     defineField({
       name: 'origin',
       title: 'Origin',
       type: 'string',
       description: 'Origin of the tea (e.g., China, Japan, India)',
     }),
+
     defineField({
       name: 'brewingInstructions',
       title: 'Brewing Instructions',
@@ -60,12 +66,14 @@ export default defineType({
           type: 'string',
           description: 'Tea amount (e.g., ~1g tea per 100ml water)',
         }),
+
         defineField({
           name: 'temperature',
           title: 'Temperature',
           type: 'string',
           description: 'Brewing temperature (e.g., 75-80°C)',
         }),
+
         defineField({
           name: 'steepTime',
           title: 'Steep Time',
@@ -74,6 +82,7 @@ export default defineType({
         }),
       ],
     }),
+
     defineField({
       name: 'image',
       title: 'Image',

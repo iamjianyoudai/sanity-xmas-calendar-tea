@@ -10,6 +10,7 @@ export default defineType({
       title: 'Quote',
       type: 'text',
     }),
+
     defineField({
       name: 'author',
       title: 'Author',
