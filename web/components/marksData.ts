@@ -49,8 +49,8 @@ export const marks = [
   },
   {
     id: 5,
-    x: 0.32,
-    y: 0.85,
+    x: 0.43,
+    y: 0.83,
     color: "#5d4037",
     label: "Pu-erh Tea",
     name: "Pu-erh Tea",
