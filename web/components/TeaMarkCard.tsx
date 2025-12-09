@@ -70,7 +70,7 @@ export default function TeaMarkCard({
         top: clamped.top,
       }}
     >
-      <div className="bg-black/40 backdrop-blur-md rounded-lg shadow-2xl border border-white/20 p-4 md:p-5 w-[240px] md:w-[280px] max-h-[80vh] overflow-hidden animate-[card-entrance_0.3s_ease-out_forwards]">
+      <div className="bg-black/40 backdrop-blur-md rounded-md shadow-2xl border border-white/20 p-4 md:p-5 w-[240px] md:w-[280px] max-h-[80vh] overflow-hidden animate-[card-entrance_0.3s_ease-out_forwards]">
         {/* Image - Portrait orientation */}
         {imageUrl && (
           <div className="relative w-full h-48 md:h-56 mb-4 rounded-md overflow-hidden bg-white/5">

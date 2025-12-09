@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { useState, useEffect, useMemo } from "react";
 import TeaMarks from "@/components/TeaMarks";
 import TeaModal from "@/components/TeaModal";
@@ -172,12 +173,18 @@ export default function Home() {
                       type="button"
                       key={teaType._id || `tea-type-${idx}`}
                       onClick={() => handleTeaClick(teaType.slug)}
-                      className="px-3 py-2 md:px-4 text-gray-300 hover:text-white/80 text-lg md:text-xl lg:text-2xl font-base transition-colors duration-200 hover:bg-white/30 rounded-md cursor-pointer whitespace-nowrap underline decoration-white/60 hover:no-underline underline-offset-4"
+                      className="px-3 py-2 md:px-4 text-gray-100 hover:text-white/100 text-lg md:text-xl lg:text-2xl font-base transition-colors duration-200 hover:bg-white/30 rounded-md cursor-pointer whitespace-nowrap underline decoration-white/60 hover:no-underline underline-offset-4"
                     >
                       {teaType.name}
                     </button>
                   );
                 })}
+                <Link
+                  href="/teas"
+                  className="px-3 py-2 md:px-4 text-gray-100 hover:text-white/100 text-lg md:text-xl lg:text-2xl font-base transition-colors duration-200 hover:bg-white/20 rounded-md cursor-pointer whitespace-nowrap underline decoration-white/40 hover:no-underline underline-offset-4"
+                >
+                  Show all teas
+                </Link>
               </div>
             </div>
           </div>
@@ -193,9 +200,9 @@ export default function Home() {
       />
       {isLoadingTea && (
         <div className="fixed inset-0 bg-black/50 z-40 flex items-center justify-center">
-          <div className="bg-transparent rounded-lg p-8 shadow-xl">
+          <div className="bg-transparent rounded-md p-8 shadow-xl">
             <div className="text-center">
-              <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-green-600 mx-auto mb-4"></div>
+              <div className="animate-spin rounded-md h-12 w-12 border-b-2 border-green-600 mx-auto mb-4"></div>
               <p className="text-gray-700">Loading tea details...</p>
             </div>
           </div>

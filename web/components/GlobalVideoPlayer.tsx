@@ -6,7 +6,7 @@ export default function GlobalVideoPlayer() {
   const [isDocked, setIsDocked] = useState(false);
 
   return (
-    <div className="fixed left-4 bottom-4 md:left-6 md:bottom-6 z-40 pointer-events-auto">
+    <div className="fixed left-4 bottom-4 md:left-6 md:bottom-6 z-40 pointer-events-auto hidden md:block">
       {/* Wrapper that slides both video and button together */}
       <div
         className="flex items-center gap-2 transition-transform duration-300 ease-in-out group"
@@ -31,7 +31,7 @@ export default function GlobalVideoPlayer() {
         <button
           type="button"
           onClick={() => setIsDocked((p) => !p)}
-          className={`h-9 w-9 rounded-full bg-black/75 border border-white/25 text-white flex items-center justify-center shadow-lg hover:bg-black/90 transition-all duration-300 cursor-pointer flex-shrink-0 ${
+          className={`h-9 w-9 rounded-md bg-black/75 border border-white/25 text-white flex items-center justify-center shadow-lg hover:bg-black/90 transition-all duration-300 cursor-pointer flex-shrink-0 ${
             isDocked
               ? "opacity-100"
               : "opacity-0 group-hover:opacity-100 pointer-events-none group-hover:pointer-events-auto"

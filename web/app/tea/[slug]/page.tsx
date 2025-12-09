@@ -17,7 +17,7 @@ const portableComponents: PortableTextComponents = {
       if (!url) return null;
       return (
         <div className="my-6">
-          <div className="relative w-full h-[320px] md:h-[420px] rounded-lg overflow-hidden shadow">
+          <div className="relative w-full h-[320px] md:h-[420px] rounded-md overflow-hidden shadow">
             <Image src={url} alt={v?.alt || ""} fill className="object-cover" />
           </div>
         </div>
@@ -59,7 +59,7 @@ export default async function TeaPage({ params }: PageProps) {
             </p>
             <Link
               href="/"
-              className="inline-block px-6 py-3 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors"
+              className="inline-block px-6 py-3 bg-green-600 text-white rounded-md hover:bg-green-700 transition-colors"
             >
               Back to Home
             </Link>
@@ -106,7 +106,7 @@ export default async function TeaPage({ params }: PageProps) {
 
           {/* Image Section */}
           {tea.imageUrl ? (
-            <div className="relative h-96 w-full mb-8 rounded-lg overflow-hidden shadow-lg">
+            <div className="relative h-96 w-full mb-8 rounded-md overflow-hidden shadow-lg">
               <Image
                 src={tea.imageUrl}
                 alt={tea.name}
@@ -116,7 +116,7 @@ export default async function TeaPage({ params }: PageProps) {
               />
             </div>
           ) : (
-            <div className="relative h-96 w-full mb-8 rounded-lg overflow-hidden bg-gray-200 flex items-center justify-center shadow-lg">
+            <div className="relative h-96 w-full mb-8 rounded-md overflow-hidden bg-gray-200 flex items-center justify-center shadow-lg">
               <div className="text-center text-gray-400">
                 <svg
                   className="w-24 h-24 mx-auto mb-4"
@@ -161,7 +161,7 @@ export default async function TeaPage({ params }: PageProps) {
                 {tea.flavorNotes.map((note, index) => (
                   <span
                     key={index}
-                    className="px-4 py-2 bg-white/10 text-white rounded-full text-base font-medium border border-white/15"
+                    className="px-4 py-2 bg-white/10 text-white rounded-md text-base font-medium border border-white/15"
                   >
                     {note}
                   </span>

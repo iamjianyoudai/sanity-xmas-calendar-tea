@@ -47,7 +47,7 @@ const portableComponents: PortableTextComponents = {
       if (!url) return null;
       return (
         <div className="my-6">
-          <div className="relative w-full h-[320px] md:h-[420px] rounded-lg overflow-hidden shadow">
+          <div className="relative w-full h-[320px] md:h-[420px] rounded-md overflow-hidden shadow">
             <Image src={url} alt={v?.alt || ""} fill className="object-cover" />
           </div>
         </div>
@@ -118,7 +118,7 @@ export default function TeaModal({
         {/* Close Button */}
         <button
           onClick={onClose}
-          className="absolute top-4 right-4 z-10 p-2 bg-white/90 hover:bg-white rounded-full shadow-lg transition-colors cursor-pointer"
+          className="absolute top-4 right-4 z-10 p-2 bg-white/90 hover:bg-white rounded-md shadow-lg transition-colors cursor-pointer"
           aria-label="Close modal"
         >
           <svg
@@ -149,7 +149,7 @@ export default function TeaModal({
 
           {/* Image */}
           {display.imageUrl && (
-            <div className="relative h-72 md:h-96 w-full mb-6 rounded-lg overflow-hidden shadow-lg bg-white/5">
+            <div className="relative h-72 md:h-96 w-full mb-6 rounded-md overflow-hidden shadow-lg bg-white/5">
               <Image
                 src={display.imageUrl}
                 alt={display.name}
@@ -237,7 +237,7 @@ export default function TeaModal({
           ) : (
             // Debug: Show message if relatedTeas is missing or empty
             process.env.NODE_ENV === "development" && (
-              <div className="mb-8 p-4 bg-yellow-900/20 border border-yellow-500/30 rounded-lg">
+              <div className="mb-8 p-4 bg-yellow-900/20 border border-yellow-500/30 rounded-md">
                 <p className="text-yellow-200 text-sm">
                   Debug: No related teas found.
                   {teaTypeData
@@ -259,7 +259,7 @@ export default function TeaModal({
                 {display.flavorNotes.map((note, index) => (
                   <span
                     key={index}
-                    className="px-4 py-2 bg-white/10 text-gray-100 rounded-full text-base font-medium border border-white/20"
+                    className="px-4 py-2 bg-white/10 text-gray-100 rounded-md text-base font-medium border border-white/20"
                   >
                     {note}
                   </span>
@@ -276,7 +276,7 @@ export default function TeaModal({
               </h2>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                 {display.brewingInstructions.amount && (
-                  <div className="text-center p-3 bg-white/10 rounded-lg border border-white/15">
+                  <div className="text-center p-3 bg-white/10 rounded-md border border-white/15">
                     <div className="text-3xl mb-2">⚖️</div>
                     <h3 className="font-semibold text-gray-100 mb-1 text-base">
                       Amount
@@ -287,7 +287,7 @@ export default function TeaModal({
                   </div>
                 )}
                 {display.brewingInstructions.temperature && (
-                  <div className="text-center p-3 bg-white/10 rounded-lg border border-white/15">
+                  <div className="text-center p-3 bg-white/10 rounded-md border border-white/15">
                     <div className="text-3xl mb-2">🌡️</div>
                     <h3 className="font-semibold text-gray-100 mb-1 text-base">
                       Temperature
@@ -298,7 +298,7 @@ export default function TeaModal({
                   </div>
                 )}
                 {display.brewingInstructions.steepTime && (
-                  <div className="text-center p-3 bg-white/10 rounded-lg border border-white/15">
+                  <div className="text-center p-3 bg-white/10 rounded-md border border-white/15">
                     <div className="text-3xl mb-2">⏱️</div>
                     <h3 className="font-semibold text-gray-100 mb-1 text-base">
                       Steep Time

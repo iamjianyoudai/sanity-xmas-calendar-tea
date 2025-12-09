@@ -65,3 +65,20 @@ export const teaTypeBySlugQuery = `
     }
   }
 `;
+
+// Query to fetch all teas with category info (for listing/filtering)
+export const allTeasQuery = `
+  *[_type == "tea"] | order(name asc) {
+    _id,
+    name,
+    "slug": slug.current,
+    "imageUrl": image.asset->url,
+    flavorNotes,
+    origin,
+    "category": category->{
+      _id,
+      name,
+      "slug": slug.current
+    }
+  }
+`;
