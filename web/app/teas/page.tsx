@@ -77,10 +77,9 @@ export default function AllTeasPage() {
         <div className="max-w-6xl mx-auto space-y-10">
           {/* Header */}
           <div className="space-y-3">
-            <h1 className="text-4xl md:text-5xl font-semibold">All Teas</h1>
+            <h1 className="text-4xl md:text-5xl font-semibold">Explore Teas</h1>
             <p className="text-lg text-white/75">
-              Browse every tea across all categories. Use the tags below to
-              filter.
+              Discover new favorites by type, flavor, and mood. filter.
             </p>
           </div>
 
@@ -107,7 +106,7 @@ export default function AllTeasPage() {
                   : "bg-white/10 border-white/20 text-white hover:bg-white/20"
               }`}
             >
-              Show all teas
+              Explore all teas
             </button>
             {categories.map((cat) => (
               <button
