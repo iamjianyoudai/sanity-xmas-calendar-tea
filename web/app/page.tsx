@@ -182,21 +182,6 @@ export default function Home() {
             </div>
           </div>
         </div>
-
-        {/* Video Overlay - bottom-left */}
-        {/* <div className="absolute left-4 bottom-4 md:left-6 md:bottom-6 z-30 pointer-events-auto">
-          <div className="relative w-[260px] md:w-[320px] overflow-hidden rounded-xl shadow-2xl border border-white/20 bg-black/70 backdrop-blur-md">
-            <div style={{ paddingBottom: "56.25%" }}>
-              <iframe
-                className="absolute inset-0 w-full h-full"
-                src="https://www.youtube.com/embed/Tx2WCJkLGhs?autoplay=1&mute=1&rel=0&playsinline=1"
-                title="Tea Experience"
-                allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowFullScreen
-              />
-            </div>
-          </div>
-        </div> */}
       </div>
 
       {/* Tea Modal */}

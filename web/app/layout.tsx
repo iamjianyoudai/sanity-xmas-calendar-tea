@@ -1,4 +1,5 @@
 import "./globals.css";
+import GlobalVideoPlayer from "@/components/GlobalVideoPlayer";
 
 export default function RootLayout({
   children,
@@ -7,7 +8,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body suppressHydrationWarning>{children}</body>
+      <body suppressHydrationWarning>
+        <GlobalVideoPlayer />
+        {children}
+      </body>
     </html>
   );
 }
