@@ -79,7 +79,7 @@ export default function AllTeasPage() {
           <div className="space-y-3">
             <h1 className="text-4xl md:text-5xl font-semibold">Explore Teas</h1>
             <p className="text-lg text-white/75">
-              Discover new favorites by type, flavor, and mood. filter.
+              Discover new favorites by type, flavor, and mood.
             </p>
           </div>
 
