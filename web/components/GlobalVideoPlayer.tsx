@@ -11,7 +11,7 @@ export default function GlobalVideoPlayer() {
       <div
         className="flex items-center gap-2 transition-transform duration-300 ease-in-out group"
         style={{
-          transform: isDocked ? "translateX(-98%)" : "translateX(0)",
+          transform: isDocked ? "translateX(-90%)" : "translateX(0)",
         }}
       >
         {/* Video container */}
