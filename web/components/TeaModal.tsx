@@ -118,7 +118,7 @@ export default function TeaModal({
         {/* Close Button */}
         <button
           onClick={onClose}
-          className="absolute top-4 right-4 z-10 p-2 bg-white/90 hover:bg-white rounded-md shadow-lg transition-colors cursor-pointer"
+          className="absolute top-4 right-4 z-10 p-2 bg-white/90 hover:bg-white rounded-full shadow-lg transition-colors cursor-pointer"
           aria-label="Close modal"
         >
           <svg
@@ -192,7 +192,7 @@ export default function TeaModal({
           display.relatedTeas.length > 0 ? (
             <div className="mb-8">
               <h2 className="text-2xl font-semibold text-gray-100 mb-4">
-                More from {display.name || "this category"}
+                More from {display.name}
               </h2>
               <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
                 {display.relatedTeas.map((t, idx) => {

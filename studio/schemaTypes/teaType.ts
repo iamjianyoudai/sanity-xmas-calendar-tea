@@ -24,6 +24,13 @@ export default defineType({
     }),
 
     defineField({
+      name: 'image',
+      title: 'Hero Image',
+      type: 'image',
+      options: {hotspot: true},
+    }),
+
+    defineField({
       name: 'description',
       title: 'Description',
       type: 'text',

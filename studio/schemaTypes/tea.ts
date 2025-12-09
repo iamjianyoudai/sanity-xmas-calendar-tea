@@ -6,17 +6,6 @@ export default defineType({
   type: 'document',
   fields: [
     defineField({
-      name: 'slug',
-      title: 'Slug',
-      type: 'slug',
-      options: {
-        source: 'name',
-        maxLength: 96,
-      },
-      validation: (Rule) => Rule.required(),
-    }),
-
-    defineField({
       name: 'name',
       title: 'Tea Name',
       type: 'string',
@@ -29,6 +18,17 @@ export default defineType({
       title: 'Category',
       type: 'reference',
       to: [{type: 'teaType'}],
+      validation: (Rule) => Rule.required(),
+    }),
+
+    defineField({
+      name: 'slug',
+      title: 'Slug',
+      type: 'slug',
+      options: {
+        source: 'name',
+        maxLength: 96,
+      },
       validation: (Rule) => Rule.required(),
     }),
 
