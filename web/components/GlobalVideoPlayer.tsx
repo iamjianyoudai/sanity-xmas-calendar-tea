@@ -46,7 +46,7 @@ export default function GlobalVideoPlayer() {
             strokeWidth="2"
             strokeLinecap="round"
             strokeLinejoin="round"
-            className="h-5 w-5"
+            className="h-6 w-6"
             style={{ transform: isDocked ? "rotate(180deg)" : "rotate(0deg)" }}
           >
             <path d="m15 18-6-6 6-6" />
