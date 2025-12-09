@@ -82,3 +82,30 @@ export const allTeasQuery = `
     }
   }
 `;
+
+// Query to fetch tea categories (slim)
+export const teaCategoriesQuery = `
+  *[_type == "teaType"] | order(name asc) {
+    _id,
+    name,
+    "slug": slug.current
+  }
+`;
+
+// Query to fetch teas filtered by category slug ("all" returns everything)
+export const teasByCategoryQuery = `
+  *[_type == "tea" && ($slug == "all" || category->slug.current == $slug)]
+    | order(name asc) {
+      _id,
+      name,
+      "slug": slug.current,
+      "imageUrl": image.asset->url,
+      flavorNotes,
+      origin,
+      "category": category->{
+        _id,
+        name,
+        "slug": slug.current
+      }
+    }
+`;

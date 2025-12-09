@@ -2,9 +2,9 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useState } from "react";
 import { client } from "@/lib/sanity";
-import { allTeasQuery } from "@/lib/queries";
+import { teaCategoriesQuery, teasByCategoryQuery } from "@/lib/queries";
 
 type ListTea = {
   _id: string;
@@ -20,35 +20,46 @@ type ListTea = {
 
 export default function AllTeasPage() {
   const [teas, setTeas] = useState<ListTea[]>([]);
+  const [cachedTeas, setCachedTeas] = useState<Record<string, ListTea[]>>({});
+  const [categories, setCategories] = useState<
+    { slug: string; name: string }[]
+  >([]);
   const [selectedSlug, setSelectedSlug] = useState<string>("all");
   const [loading, setLoading] = useState<boolean>(true);
 
   useEffect(() => {
     client
       .withConfig({ useCdn: true })
-      .fetch(allTeasQuery)
-      .then((data: ListTea[]) => setTeas(Array.isArray(data) ? data : []))
-      .finally(() => setLoading(false));
+      .fetch(teaCategoriesQuery)
+      .then((categoryResults: Array<{ slug?: string; name?: string }>) => {
+        const categoryList = Array.isArray(categoryResults)
+          ? categoryResults
+              .filter((category) => category?.slug)
+              .map((category) => ({
+                slug: category.slug as string,
+                name: category.name || (category.slug as string),
+              }))
+          : [];
+        setCategories(categoryList);
+      })
+      .catch(() => setCategories([]));
   }, []);
 
-  const categories = useMemo(() => {
-    const list = teas
-      .map((t) => t.category)
-      .filter((c): c is NonNullable<ListTea["category"]> => !!c && !!c.slug);
-    const unique = new Map<string, { slug: string; name: string }>();
-    list.forEach((c) => {
-      const slug = c.slug!;
-      if (!unique.has(slug)) unique.set(slug, { slug, name: c.name || slug });
-    });
-    return Array.from(unique.values()).sort((a, b) =>
-      a.name.localeCompare(b.name)
-    );
-  }, [teas]);
-
-  const filteredTeas = useMemo(() => {
-    if (selectedSlug === "all") return teas;
-    return teas.filter((t) => t.category?.slug === selectedSlug);
-  }, [teas, selectedSlug]);
+  useEffect(() => {
+    const cached = cachedTeas[selectedSlug];
+    if (cached) {
+      return;
+    }
+    client
+      .withConfig({ useCdn: true })
+      .fetch(teasByCategoryQuery, { slug: selectedSlug })
+      .then((data: ListTea[]) => {
+        const next = Array.isArray(data) ? data : [];
+        setTeas(next);
+        setCachedTeas((prev) => ({ ...prev, [selectedSlug]: next }));
+      })
+      .finally(() => setLoading(false));
+  }, [selectedSlug, cachedTeas]);
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-[#0f0f0f] via-[#131313] to-[#0b0b0b] text-white">
@@ -79,7 +90,7 @@ export default function AllTeasPage() {
           <div className="space-y-3">
             <h1 className="text-4xl md:text-5xl font-semibold">Explore Teas</h1>
             <p className="text-lg text-white/75">
-              Discover new favorites by type, flavor, and mood.
+              Discover new favorites by Tea type.
             </p>
           </div>
 
@@ -99,7 +110,17 @@ export default function AllTeasPage() {
           <div className="flex flex-wrap gap-3">
             <button
               type="button"
-              onClick={() => setSelectedSlug("all")}
+              onClick={() => {
+                const cached = cachedTeas["all"];
+                if (cached) {
+                  setSelectedSlug("all");
+                  setTeas(cached);
+                  setLoading(false);
+                  return;
+                }
+                setLoading(true);
+                setSelectedSlug("all");
+              }}
               className={`px-3 py-1.5 rounded-md text-sm md:text-base border transition-colors cursor-pointer ${
                 selectedSlug === "all"
                   ? "bg-gray-800 text-white border-white"
@@ -112,7 +133,17 @@ export default function AllTeasPage() {
               <button
                 key={cat.slug}
                 type="button"
-                onClick={() => setSelectedSlug(cat.slug)}
+                onClick={() => {
+                  const cached = cachedTeas[cat.slug];
+                  if (cached) {
+                    setSelectedSlug(cat.slug);
+                    setTeas(cached);
+                    setLoading(false);
+                    return;
+                  }
+                  setLoading(true);
+                  setSelectedSlug(cat.slug);
+                }}
                 className={`px-3 py-1.5 rounded-md text-sm md:text-base border transition-colors cursor-pointer ${
                   selectedSlug === cat.slug
                     ? "bg-white text-black border-white"
@@ -133,12 +164,12 @@ export default function AllTeasPage() {
                   className="h-56 rounded-xl border border-white/10 bg-white/5 animate-pulse"
                 />
               ))
-            ) : filteredTeas.length === 0 ? (
+            ) : teas.length === 0 ? (
               <div className="col-span-full text-center text-white/70">
                 No teas found for this category.
               </div>
             ) : (
-              filteredTeas.map((tea) => (
+              teas.map((tea) => (
                 <Link
                   key={tea._id}
                   href={tea.slug ? `/tea/${tea.slug}` : "#"}
