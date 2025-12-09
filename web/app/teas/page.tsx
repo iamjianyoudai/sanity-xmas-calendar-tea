@@ -106,7 +106,7 @@ export default function AllTeasPage() {
                   : "bg-white/10 border-white/20 text-white hover:bg-white/20"
               }`}
             >
-              Explore all teas
+              All Teas
             </button>
             {categories.map((cat) => (
               <button
