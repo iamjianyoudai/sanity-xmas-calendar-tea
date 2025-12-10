@@ -2,7 +2,7 @@ import {defineField, defineType} from 'sanity'
 
 export default defineType({
   name: 'teaType',
-  title: 'Tea Type',
+  title: 'Tea Types',
   type: 'document',
   fields: [
     defineField({
@@ -41,7 +41,25 @@ export default defineType({
       name: 'relatedTeas',
       title: 'Related teas',
       type: 'array',
-      of: [{type: 'reference', to: [{type: 'tea'}]}],
+      of: [
+        {
+          type: 'reference',
+          to: [{type: 'tea'}],
+          options: {
+            // Show only teas whose category matches this tea type
+            filter: ({document}: {document?: {_id?: string}}) => {
+              const baseId = document?._id?.replace(/^drafts\./, '')
+              return {
+                filter: 'category._ref in [$draftId, $publishedId]',
+                params: {
+                  draftId: baseId ? `drafts.${baseId}` : '',
+                  publishedId: baseId || '',
+                },
+              }
+            },
+          },
+        },
+      ],
     }),
 
     defineField({

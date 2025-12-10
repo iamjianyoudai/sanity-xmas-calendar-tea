@@ -15,7 +15,7 @@ export default defineType({
 
     defineField({
       name: 'category',
-      title: 'Category',
+      title: 'Tea Type (Category)',
       type: 'reference',
       to: [{type: 'teaType'}],
       validation: (Rule) => Rule.required(),
