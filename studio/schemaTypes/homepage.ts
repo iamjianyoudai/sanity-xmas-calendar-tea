@@ -1,5 +1,6 @@
 import {defineField, defineType} from 'sanity'
 import {TeaPotIcon} from '../icons/TeaIcons'
+import CharCountInput from '../components/CharCountInput'
 
 export default defineType({
   name: 'homepage',
@@ -11,6 +12,7 @@ export default defineType({
       name: 'headerTitle',
       title: 'Header Title',
       type: 'string',
+      components: {input: CharCountInput},
     }),
 
     defineField({
