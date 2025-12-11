@@ -2,6 +2,7 @@ import {defineField, defineType} from 'sanity'
 import {TeaPotIcon} from '../icons/TeaIcons'
 import CharCountInput from '../components/CharCountInput'
 import TeaFeaturedManagerInput from '../components/TeaFeaturedManagerInput'
+import QRCodeInput from '../components/QRCodeInput'
 
 export default defineType({
   name: 'homepage',
@@ -36,6 +37,14 @@ export default defineType({
       type: 'string',
       readOnly: true,
       components: {input: TeaFeaturedManagerInput},
+    }),
+
+    defineField({
+      name: 'shareUrl',
+      title: 'Share URL (QR)',
+      type: 'string',
+      description: 'Enter a URL to generate a QR code preview.',
+      components: {input: QRCodeInput},
     }),
   ],
   preview: {
