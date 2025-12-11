@@ -1,9 +1,11 @@
 import {defineField, defineType} from 'sanity'
+import {TeaIcon} from '../icons/TeaIcons'
 
 export default defineType({
   name: 'tea',
   title: 'Teas',
   type: 'document',
+  icon: TeaIcon,
   fields: [
     defineField({
       name: 'name',

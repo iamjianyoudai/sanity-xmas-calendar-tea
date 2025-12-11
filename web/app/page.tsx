@@ -65,6 +65,7 @@ export default function Home() {
 
     // Fetch homepage content (title, subtitle, tea list)
     client
+      .withConfig({ useCdn: false })
       .fetch(homepageQuery)
       .then((data) => {
         setHomeContent(data && typeof data === "object" ? data : {});

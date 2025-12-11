@@ -1,5 +1,5 @@
 export const homepageQuery = `
-  *[_type == "homepage"][0] {
+  *[_type == "homepage"] | order(_updatedAt desc)[0] {
     headerTitle,
     subtitle,
     teaTypes[]->{
