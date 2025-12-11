@@ -15,8 +15,8 @@ const deskStructure: StructureResolver = (S) =>
 
       // Tea Types grouped view
       S.listItem()
-        .title('Tea Types grouped')
-        .id('teaTypesGrouped')
+        .title('Tea Catalog')
+        .id('teaCatalog')
         .child(
           S.documentTypeList('teaType')
             .title('Tea Types')
