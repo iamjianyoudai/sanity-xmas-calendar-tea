@@ -1,6 +1,7 @@
 import {defineField, defineType} from 'sanity'
 import {TeaPotIcon} from '../icons/TeaIcons'
 import CharCountInput from '../components/CharCountInput'
+import TeaFeaturedManagerInput from '../components/TeaFeaturedManagerInput'
 
 export default defineType({
   name: 'homepage',
@@ -27,6 +28,14 @@ export default defineType({
       type: 'array',
       of: [{type: 'reference', to: [{type: 'teaType'}]}],
       description: 'Select tea types to display on the homepage.',
+    }),
+
+    defineField({
+      name: 'featuredManager',
+      title: 'Featured Teas Manager',
+      type: 'string',
+      readOnly: true,
+      components: {input: TeaFeaturedManagerInput},
     }),
   ],
   preview: {

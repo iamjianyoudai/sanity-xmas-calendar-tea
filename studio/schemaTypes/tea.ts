@@ -35,6 +35,22 @@ export default defineType({
     }),
 
     defineField({
+      name: 'featured',
+      title: 'Featured on homepage',
+      type: 'boolean',
+    }),
+
+    defineField({
+      name: 'image',
+      title: 'Image',
+      type: 'image',
+      options: {
+        hotspot: true,
+      },
+      description: 'Image of the tea',
+    }),
+
+    defineField({
       name: 'body',
       title: 'Body',
       type: 'blockContent',
@@ -82,16 +98,6 @@ export default defineType({
           description: 'Steeping time (e.g., 45s - 2m)',
         }),
       ],
-    }),
-
-    defineField({
-      name: 'image',
-      title: 'Image',
-      type: 'image',
-      options: {
-        hotspot: true,
-      },
-      description: 'Image of the tea',
     }),
   ],
   preview: {
