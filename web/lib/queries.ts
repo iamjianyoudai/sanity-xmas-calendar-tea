@@ -109,3 +109,50 @@ export const teasByCategoryQuery = `
       }
     }
 `;
+
+// Query to fetch a page by slug with page builder content
+export const pageBySlugQuery = `
+  *[_type == "page" && slug.current == $slug][0] {
+    _id,
+    title,
+    "slug": slug.current,
+    "mainImageUrl": mainImage.asset->url,
+    content[] {
+      _type,
+      _key,
+      _type == "textModule" => {
+        title,
+        content[]{
+          ...,
+          _type == "image" => {
+            ...,
+            "url": asset->url,
+            "alt": coalesce(alt, asset->altText)
+          }
+        }
+      },
+      _type == "videoModule" => {
+        title,
+        videoUrl,
+        caption,
+        autoplay
+      },
+      _type == "brewingInstructionsModule" => {
+        title,
+        amount,
+        temperature,
+        steepTime
+      }
+    }
+  }
+`;
+
+// Query to fetch all pages (for listing)
+export const allPagesQuery = `
+  *[_type == "page"] | order(title asc) {
+    _id,
+    title,
+    "slug": slug.current,
+    "mainImageUrl": mainImage.asset->url
+  }
+`;

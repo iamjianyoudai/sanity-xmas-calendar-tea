@@ -186,6 +186,12 @@ export default function Home() {
                 >
                   Explore all teas
                 </Link>
+                <Link
+                  href="/page/master-the-art-of-tea-brewing"
+                  className="px-3 py-2 md:px-4 text-gray-100 hover:text-white/100 text-lg md:text-xl lg:text-2xl font-base transition-colors duration-200 hover:bg-white/20 rounded-md cursor-pointer whitespace-nowrap underline decoration-white/40 hover:no-underline underline-offset-4"
+                >
+                  Brewing guide
+                </Link>
               </div>
             </div>
           </div>

@@ -28,8 +28,11 @@ const deskStructure: StructureResolver = (S) =>
             ),
         ),
       S.divider(),
+
+      S.documentTypeListItem('page').title('Pages'),
+
       ...S.documentTypeListItems().filter(
-        (listItem) => !['homepage', 'teaType', 'tea'].includes(listItem.getId() || ''),
+        (listItem) => !['homepage', 'teaType', 'tea', 'page'].includes(listItem.getId() || ''),
       ),
     ])
 
