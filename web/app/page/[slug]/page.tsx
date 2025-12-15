@@ -100,3 +100,4 @@ export default async function PagePage({ params }: PageProps) {
     </div>
   );
 }
+
