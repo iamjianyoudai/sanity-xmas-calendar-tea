@@ -6,7 +6,7 @@ import deskStructure from './deskStructure'
 import {TeaPotIcon} from './icons/TeaIcons'
 
 export default defineConfig({
-  name: 'default',
+  name: 'studio',
   title: 'Tea House',
   icon: TeaPotIcon,
 
